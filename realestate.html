@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Real Estate Work - BizzBring Media</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+  <style>
+    :root {
+      --primary: #667eea;
+      --primary-dark: #5a67d8;
+      --secondary: #764ba2;
+      --accent: #f093fb;
+      --accent-secondary: #f5576c;
+      --neutral-50: #F9FAFB;
+      --text-main: #1a1a1a;
+      --text-muted: #6B7280;
+      --white: #ffffff;
+      --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--neutral-50);
+      color: var(--text-main);
+      line-height: 1.6;
+      cursor: none;
+    }
+
+    header {
+      background-color: white;
+      padding: 0.5rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    nav a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 10px 20px;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: var(--primary-dark);
+      color: white;
+    }
+
+    .logo-img {
+      height: 100px;
+      width: auto;
+    }
+
+    .project-hero {
+      position: relative;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      overflow: hidden;
+      margin-top: 80px;
+    }
+
+    .project-hero video.hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .project-hero .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .project-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #f9fafb;
+      min-height: 50px;
+    }
+
+    .cta-button {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+      box-shadow: 0 8px 24px rgba(102, 126, 234, 0.45);
+      transform: translateY(-2px);
+    }
+
+    .project-details {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 20px;
+    }
+
+    .project-details h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-details p {
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+    }
+
+    .project-details ul {
+      margin-bottom: 2rem;
+      padding-left: 1.5rem;
+      color: var(--text-muted);
+    }
+
+    .project-details ul li {
+      margin-bottom: 0.6rem;
+    }
+
+    .project-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .project-gallery video {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid var(--primary-dark);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-gallery video:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+    }
+
+    .cta-wrapper {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    footer {
+      background-color: var(--text-main);
+      color: white;
+      text-align: center;
+      padding: 1.5rem 0;
+      margin-top: 2rem;
+    }
+
+    .cursor-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--primary);
+      border-radius: 50%;
+      pointer-events: none;
+      transition: transform 0.1s ease, border 0.3s ease, background 0.3s ease;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      mix-blend-mode: difference;
+    }
+
+    .cursor-ring.visible { opacity: 1; }
+    .cursor-ring.hovered {
+      transform: translate(-50%, -50%) scale(2);
+      border-color: var(--accent);
+      animation: morphingGlow 2s ease-in-out infinite;
+    }
+
+    .cursor-ring.clicked {
+      transform: translate(-50%, -50%) scale(0.8);
+      background: var(--primary);
+    }
+
+    @keyframes morphingGlow {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(102, 126, 234, 0.3), 0 0 40px rgba(102, 126, 234, 0.2), 0 0 60px rgba(102, 126, 234, 0.1);
+      }
+      25% {
+        box-shadow: 0 0 30px rgba(118, 75, 162, 0.4), 0 0 60px rgba(118, 75, 162, 0.3), 0 0 90px rgba(118, 75, 162, 0.2);
+      }
+      50% {
+        box-shadow: 0 0 40px rgba(240, 147, 251, 0.4), 0 0 80px rgba(240, 147, 251, 0.3), 0 0 120px rgba(240, 147, 251, 0.2);
+      }
+      75% {
+        box-shadow: 0 0 35px rgba(245, 87, 108, 0.4), 0 0 70px rgba(245, 87, 108, 0.3), 0 0 105px rgba(245, 87, 108, 0.2);
+      }
+    }
+
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -3;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="particles-js"></div>
+  <div class="cursor-ring" id="customCursor"></div>
+
+  <header>
+    <nav>
+      <img src="logo.webp" alt="BizzBring Media Logo" class="logo-img" />
+      <a href="index.html" class="cta-button">Home</a>
+    </nav>
+  </header>
+
+  <section class="project-hero" data-aos="fade-in">
+    <video autoplay muted loop playsinline class="hero-video">
+      <source src="real.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-content">
+      <h1>Real-Estate Work</h1>
+      <p id="typing-text"></p>
+      <a href="index.html#contact" class="cta-button">Start Your Project</a>
+    </div>
+  </section>
+
+  <section class="project-details" data-aos="fade-up">
+    <h2>🧑‍💼 Client Overview</h2>
+    <p>Aryan is a 28-year-old independent real estate agent focused on selling residential properties in urban areas. He wanted to build credibility online and generate qualified leads through consistent, high-quality content.</p>
+
+    <h2>💡 What We Did</h2>
+    <p>We developed a content strategy focused on property highlights, client testimonials, local market tips, and video reels. The goal was to build trust, attract leads, and position Aryan as a local real estate expert.</p>
+
+    <h2>🛠️ Key Actions</h2>
+    <ul>
+      <li>Created 12 posts/month (carousels, reels, infographics)</li>
+      <li>Managed daily story updates & engagement</li>
+      <li>Responded to DMs and inquiries</li>
+      <li>Monthly content calendar + hashtag strategy</li>
+      <li>Ran 1 boosted post per week for lead generation</li>
+    </ul>
+
+    <h2>📈 Results</h2>
+    <p>110% increase in profile visits</p>
+    <p>200+ new local followers in 2 months</p>
+    <p>45+ DMs generated from posts</p>
+    <p>9 confirmed property viewings booked via Instagram</p>
+
+    <div class="project-gallery" data-aos="zoom-in">
+      <video controls>
+        <source src="project-1.mp4" type="video/mp4">
+      </video>
+      <video controls>
+        <source src="project-1-i.mp4" type="video/mp4">
+      </video>
+      <video controls>
+        <source src="project-i-ii.webm" type="video/webm">
+      </video>
+    </div>
+
+    <div class="cta-wrapper" data-aos="fade-up">
+      <a href="index.html#contact" class="cta-button">Contact Us for Your Project</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 BizzBring Media. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    const text = "Creating a bold and cohesive brand identity for a fintech startup.";
+    let i = 0;
+    function typeEffect() {
+      if (i < text.length) {
+        document.getElementById("typing-text").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeEffect, 50);
+      }
+    }
+    window.onload = typeEffect;
+
+    const cursor = document.getElementById("customCursor");
+    document.addEventListener("mousemove", e => {
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+      cursor.classList.add("visible");
+    });
+    document.addEventListener("mousedown", () => cursor.classList.add("clicked"));
+    document.addEventListener("mouseup", () => cursor.classList.remove("clicked"));
+    document.querySelectorAll("a, button").forEach(el => {
+      el.addEventListener("mouseenter", () => cursor.classList.add("hovered"));
+      el.addEventListener("mouseleave", () => cursor.classList.remove("hovered"));
+    });
+
+    particlesJS('particles-js', {
+      particles: {
+        number: {
+          value: 160,
+          density: { enable: true, value_area: 800 }
+        },
+        color: {
+          value: ["#667eea", "#764ba2", "#f093fb", "#f5576c"]
+        },
+        shape: { type: "circle" },
+        opacity: { value: 0.3, random: true },
+        size: { value: 3, random: true },
+        line_linked: { enable: false },
+        move: {
+          enable: true,
+          speed: 1.6,
+          direction: "none",
+          random: true,
+          straight: false,
+          out_mode: "out"
+        }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "grab" },
+          onclick: { enable: true, mode: "push" },
+          resize: true
+        },
+        modes: {
+          grab: { distance: 140, line_linked: { opacity: 0.5 }},
+          push: { particles_nb: 4 }
+        }
+      },
+      retina_detect: true
+    });
+  </script>
+</body>
+
+</html>

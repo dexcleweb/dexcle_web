@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elite Fitness Hub - BizzBring Media</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #667eea;
+      --primary-dark: #5a67d8;
+      --secondary: #764ba2;
+      --accent: #f093fb;
+      --accent-secondary: #f5576c;
+      --neutral-50: #F9FAFB;
+      --text-primary: #1a1a1a;
+      --text-secondary: #525252;
+      --white: #ffffff;
+      --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--neutral-50);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      cursor: none;
+    }
+    header {
+      background-color: white;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .logo-img { height: 80px; }
+    .cta-button {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+    .cta-button:hover {
+      box-shadow: 0 8px 24px rgba(102, 126, 234, 0.45);
+      transform: translateY(-2px);
+    }
+    .project-hero {
+      position: relative;
+      height: 400px;
+      padding-top: 120px;
+      text-align: center;
+      color: white;
+      z-index: 10;
+    }
+    .project-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('gymweb0.png') center center / cover no-repeat;
+      z-index: -2;
+    }
+    .project-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: -1;
+    }
+    .project-hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      position: relative;
+    }
+    .project-details {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+    .project-details h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .project-details p,
+    .project-details ul {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+    }
+    .project-details ul { padding-left: 20px; }
+    .cta-wrapper { text-align: center; margin-top: 40px; }
+    footer {
+      background: var(--text-primary);
+      color: var(--white);
+      text-align: center;
+      padding: 40px 0;
+    }
+    .scroll-animate {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    .scroll-animate.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .cursor-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--primary);
+      border-radius: 50%;
+      pointer-events: none;
+      transition: transform 0.1s ease, border 0.3s ease, background 0.3s ease;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      mix-blend-mode: difference;
+    }
+    .cursor-ring.visible { opacity: 1; }
+    .cursor-ring.hovered {
+      transform: translate(-50%, -50%) scale(2);
+      border-color: var(--accent);
+      animation: morphingGlow 2s ease-in-out infinite;
+    }
+    .cursor-ring.clicked {
+      transform: translate(-50%, -50%) scale(0.8);
+      background: var(--primary);
+    }
+    @keyframes morphingGlow {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(102, 126, 234, 0.3), 0 0 40px rgba(102, 126, 234, 0.2), 0 0 60px rgba(102, 126, 234, 0.1);
+      }
+      25% {
+        box-shadow: 0 0 30px rgba(118, 75, 162, 0.4), 0 0 60px rgba(118, 75, 162, 0.3), 0 0 90px rgba(118, 75, 162, 0.2);
+      }
+      50% {
+        box-shadow: 0 0 40px rgba(240, 147, 251, 0.4), 0 0 80px rgba(240, 147, 251, 0.3), 0 0 120px rgba(240, 147, 251, 0.2);
+      }
+      75% {
+        box-shadow: 0 0 35px rgba(245, 87, 108, 0.4), 0 0 70px rgba(245, 87, 108, 0.3), 0 0 105px rgba(245, 87, 108, 0.2);
+      }
+    }
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -3;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+  <div class="cursor-ring" id="customCursor"></div>
+  <header>
+    <nav>
+      <a href="index.html"><img src="logo.webp" alt="Logo" class="logo-img" /></a>
+      <a href="index.html" class="cta-button">Home</a>
+    </nav>
+  </header>
+  <section class="project-hero scroll-animate">
+    <h1>Elite Fitness Hub</h1>
+    <p id="typing-text"></p>
+    <a href="index.html#contact" class="cta-button" style="margin-top: 60px; display: inline-block;">Start Your Project</a>
+  </section>
+  <section class="project-details scroll-animate">
+    <h2>🧑‍💼 Client Overview</h2>
+    <p>FitPro Gym is a local fitness center offering personal training and group classes...</p>
+    <h2>💡 What We Did</h2>
+    <p>We designed and developed a clean, energetic 5-page responsive website...</p>
+    <h2>🛠️ Key Features</h2>
+    <ul>
+      <li>Vibrant, fitness-inspired UI design</li>
+      <li>Fully responsive across all devices</li>
+      <li>Class schedule section with easy navigation</li>
+      <li>Trainer profiles with images and bios</li>
+      <li>Contact and membership inquiry forms</li>
+      <li>Basic SEO and fast loading times</li>
+    </ul>
+    <h2>📈 Impact</h2>
+    <p>Website launched in 10 days</p>
+    <p>2.5× increase in membership inquiries</p>
+    <p>Improved brand image and online presence</p>
+    <div class="cta-wrapper">
+      <a href="index.html#contact" class="cta-button">Let's Build Your Website</a>
+    </div>
+  </section>
+  <footer>
+    <p>&copy; 2025 BizzBring Media. All rights reserved.</p>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    const text = "Built a clean, responsive site to showcase trainers, classes, and boost memberships.";
+    let i = 0;
+    function typeEffect() {
+      if (i < text.length) {
+        document.getElementById("typing-text").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeEffect, 40);
+      }
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll(".scroll-animate").forEach(el => observer.observe(el));
+    window.onload = typeEffect;
+
+    const cursor = document.getElementById("customCursor");
+    document.addEventListener("mousemove", e => {
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+      cursor.classList.add("visible");
+    });
+    document.addEventListener("mousedown", () => cursor.classList.add("clicked"));
+    document.addEventListener("mouseup", () => cursor.classList.remove("clicked"));
+    document.querySelectorAll("a, button").forEach(el => {
+      el.addEventListener("mouseenter", () => cursor.classList.add("hovered"));
+      el.addEventListener("mouseleave", () => cursor.classList.remove("hovered"));
+    });
+
+    particlesJS('particles-js', {
+  particles: {
+    number: {
+      value: 160,
+      density: {
+        enable: true,
+        value_area: 800
+      }
+    },
+    color: {
+      value: ["#667eea", "#764ba2", "#f093fb", "#f5576c"]
+    },
+    shape: {
+      type: "circle"
+    },
+    opacity: {
+      value: 0.3,
+      random: true
+    },
+    size: {
+      value: 3,
+      random: true
+    },
+    line_linked: {
+      enable: false
+    },
+    move: {
+      enable: true,
+      speed: 1.6,
+      direction: "none",
+      random: true,
+      straight: false,
+      out_mode: "out"
+    }
+  },
+  interactivity: {
+    detect_on: "canvas",
+    events: {
+      onhover: {
+        enable: true,
+        mode: "grab"
+      },
+      onclick: {
+        enable: true,
+        mode: "push"
+      },
+      resize: true
+    },
+    modes: {
+      grab: {
+        distance: 140,
+        line_linked: {
+          opacity: 0.5
+        }
+      },
+      push: {
+        particles_nb: 4
+      }
+    }
+  },
+  retina_detect: true
+});
+  </script>
+</body>
+</html>
